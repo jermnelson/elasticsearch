@@ -16,12 +16,13 @@ RUN echo "deb http://packages.elasticsearch.org/elasticsearch/${ELASTICSEARCH_VE
 
 RUN apt-get update \
 	&& apt-get install elasticsearch=$ELASTICSEARCH_VERSION \
-	&& rm -rf /var/lib/apt/lists/*
+	&& rm -rf /var/lib/apt/lists/* \
+        && mkdir /usr/share/elasticsearch/data
 
 ENV PATH /usr/share/elasticsearch/bin:$PATH
 COPY config /usr/share/elasticsearch/config
 
-VOLUME /usr/share/elasticsearch/data
+#VOLUME /usr/share/elasticsearch/data
 
 COPY docker-entrypoint.sh /
 

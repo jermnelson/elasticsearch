@@ -160,7 +160,7 @@ cluster.name: bibframe
 
 # Path to log files:
 #
-#path.logs: /path/to/logs
+path.logs: /var/log/elasticsearch
 
 # Path to where plugins are installed:
 #
