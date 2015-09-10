@@ -1,6 +1,6 @@
 # you can override this using by setting a system property, for example -Des.logger.level=DEBUG
 es.logger.level: INFO
-rootLogger: ${es.logger.level}, console
+rootLogger: ${es.logger.level}, console, index_search_log_file
 logger:
   # log action execution errors for easier debugging
   action: DEBUG
@@ -13,3 +13,12 @@ appender:
     layout:
       type: consolePattern
       conversionPattern: "[%d{ISO8601}][%-5p][%-25c] %m%n"
+
+  index_search_log_file:
+    type: dailyRollingFile
+    file: ${path.logs}/${cluster.name}_index_search.log
+    datePattern: "'.'yyyy-MM-dd"
+    layout:
+      type: pattern
+      converstionPattern: "[%d{ISO8601}][%-5p][%-25c] %m%n"
+
